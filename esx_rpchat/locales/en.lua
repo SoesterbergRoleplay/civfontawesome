@@ -1,10 +1,10 @@
 Locales['en'] = {
 	['ooc_help'] = 'type an out of character message',
-	['ooc_prefix'] = 'OOC | %s',
+	['ooc_prefix'] = '%s',
 	['twt_help'] = 'send a tweet',
 	['twt_prefix'] = '^0[^4Twitter^0] (^5@%s^0)',
 	['me_help'] = 'personal action',
-	['me_prefix'] = 'me | %s',
+	['me_prefix'] = '%s',
 	['do_help'] = 'rP information',
 	['do_prefix'] = 'do | %s',
 	['news_help'] = 'announce news (do not abuse)',
