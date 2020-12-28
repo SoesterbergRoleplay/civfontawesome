@@ -27,10 +27,11 @@ end
  AddEventHandler('chatMessage', function(source, name, message)
       if string.sub(message, 1, string.len("/")) ~= "/" then
           local name = getIdentity(source)
-		TriggerClientEvent("sendProximityMessageMe", -1, source, name.firstname, message)
-      end
-      CancelEvent()
-  end)
+		    TriggerClientEvent('chat:addMessage', -1, {
+        template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(41, 41, 41, 0.6); border-radius: 3px;"><i class="fas fa-globe"></i> {0}:<br> {1}</div>',
+        args = { playerName, msg }
+    })
+end, false)
   
   -- TriggerEvent('es:addCommand', 'me', function(source, args, user)
   --    local name = getIdentity(source)
@@ -52,22 +53,10 @@ end)
 
  RegisterCommand('tweet', function(source, args, rawCommand)
     local playerName = GetPlayerName(source)
-    local msg = rawCommand:sub(6)
+    local msg = rawCommand:sub(5)
     local name = getIdentity(source)
-    fal = name.firstname .. " " .. name.lastname
     TriggerClientEvent('chat:addMessage', -1, {
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(28, 160, 242, 0.6); border-radius: 3px;"><i class="fab fa-twitter"></i> @{0}:<br> {1}</div>',
-        args = { fal, msg }
-    })
-end, false)
-
- RegisterCommand('anontweet', function(source, args, rawCommand)
-    local playerName = GetPlayerName(source)
-    local msg = rawCommand:sub(11)
-    local name = getIdentity(source)
-    fal = name.firstname .. " " .. name.lastname
-    TriggerClientEvent('chat:addMessage', -1, {
-        template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(28, 160, 242, 0.6); border-radius: 3px;"><i class="fab fa-twitter"></i> @Anonymous:<br> {1}</div>',
         args = { fal, msg }
     })
 end, false)
@@ -76,7 +65,6 @@ end, false)
     local playerName = GetPlayerName(source)
     local msg = rawCommand:sub(4)
     local name = getIdentity(source)
-    fal = name.firstname .. " " .. name.lastname
     TriggerClientEvent('chat:addMessage', -1, {
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(214, 168, 0, 1); border-radius: 3px;"><i class="fas fa-ad"></i> Advertisement:<br> {1}<br></div>',
         args = { fal, msg }
