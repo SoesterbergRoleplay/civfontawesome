@@ -32,23 +32,11 @@ end
       CancelEvent()
   end)
   
-  -- TriggerEvent('es:addCommand', 'me', function(source, args, user)
-  --    local name = getIdentity(source)
-  --    TriggerClientEvent("sendProximityMessageMe", -1, source, name.firstname, table.concat(args, " "))
-  -- end) 
-
-
-
-  --- TriggerEvent('es:addCommand', 'me', function(source, args, user)
-  ---    local name = getIdentity(source)
-  ---    TriggerClientEvent("sendProximityMessageMe", -1, source, name.firstname, table.concat(args, " "))
-  -- end) 
-  TriggerEvent('es:addCommand', 'me', function(source, args, user)
-    local name = getIdentity(source)
-    table.remove(args, 2)
-    TriggerClientEvent('esx-qalle-chat:me', -1, source, name.firstname, table.concat(args, " "))
-end)
-
+   TriggerEvent('es:addCommand', 'me', function(source, args)
+    local text = " " .. Languages[Config.language].prefix .. table.concat(args, " ") .. " "
+    TriggerClientEvent('3dme:shareDisplay', -1, text, source)
+    end)
+ 
 
  RegisterCommand('tweet', function(source, args, rawCommand)
     local playerName = GetPlayerName(source)
